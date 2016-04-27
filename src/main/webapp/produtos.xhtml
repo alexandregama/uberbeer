@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:body>
-
+	<h2>Cadastro de Produto</h2>
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome" for="nome"/>
@@ -22,6 +22,24 @@
 			<h:commandButton value="Gravar" action="#{produtoBean.gravar}"/>
 		</h:panelGrid>
 	</h:form>
+	
+	<h2>Lista de Produtos</h2>
+	<h:dataTable value="#{produtoBean.produtos}" var="produto">
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{produto.nome}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Descricao</f:facet>
+			<h:outputText value="#{produto.descricao}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Preço</f:facet>
+			<h:outputText value="#{produto.preco}"/>
+		</h:column>
+	</h:dataTable>
 
 </h:body>
 
