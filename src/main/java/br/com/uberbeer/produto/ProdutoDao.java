@@ -26,6 +26,17 @@ public class ProdutoDao {
 		return lista;
 	}
 
+	public void remove(Produto produto) {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		
+		manager.getTransaction().begin();
+		Produto produtoParaRemover = manager.find(Produto.class, produto.getId());
+		manager.remove(produtoParaRemover);
+		manager.getTransaction().commit();
+		
+		manager.close();
+	}
+
 	
 	
 }

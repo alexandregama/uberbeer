@@ -26,7 +26,15 @@ public class ProdutoBean {
 		ProdutoDao dao = new ProdutoDao();
 		dao.salva(produto);
 		produto = new Produto();
+		produtos = null;
 		System.out.println("Produto gravado com sucesso!");
+	}
+	
+	public void remove(Produto produto) {
+		ProdutoDao dao = new ProdutoDao();
+		dao.remove(produto);
+		produtos = null;
+		System.out.println("Produto removido com sucesso!");
 	}
 
 	public List<Produto> getProdutos() {

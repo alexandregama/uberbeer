@@ -24,22 +24,29 @@
 	</h:form>
 	
 	<h2>Lista de Produtos</h2>
-	<h:dataTable value="#{produtoBean.produtos}" var="produto">
-		<h:column>
-			<f:facet name="header">Nome</f:facet>
-			<h:outputText value="#{produto.nome}"/>
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Descricao</f:facet>
-			<h:outputText value="#{produto.descricao}"/>
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Preço</f:facet>
-			<h:outputText value="#{produto.preco}"/>
-		</h:column>
-	</h:dataTable>
+	<h:form>
+		<h:dataTable value="#{produtoBean.produtos}" var="produto">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{produto.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Descricao</f:facet>
+				<h:outputText value="#{produto.descricao}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Preço</f:facet>
+				<h:outputText value="#{produto.preco}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Remover</f:facet>
+				<h:commandLink value="Remover" action="#{produtoBean.remove(produto)}"/>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 
 </h:body>
 
