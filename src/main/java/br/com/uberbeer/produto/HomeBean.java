@@ -1,4 +1,4 @@
-package uberbeer;
+package br.com.uberbeer.produto;
 
 import javax.faces.bean.ManagedBean;
 

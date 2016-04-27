@@ -11,15 +11,15 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome" for="nome"/>
-			<h:inputText/>
+			<h:inputText id="nome" value="#{produtoBean.produto.nome}"/>
 			
 			<h:outputLabel value="Descrição" for="descricao"/>
-			<h:inputTextarea/>
+			<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}"/>
 			
-			<h:outputLabel value="Preço"/>
-			<h:inputText/>
+			<h:outputLabel value="Preço" for="preco"/>
+			<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
 			
-			<h:commandButton value="Gravar"/>
+			<h:commandButton value="Gravar" action="#{produtoBean.gravar}"/>
 		</h:panelGrid>
 	</h:form>
 

@@ -1,4 +1,4 @@
-package uberbeer;
+package br.com.uberbeer.produto;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

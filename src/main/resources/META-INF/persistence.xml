@@ -1,6 +1,6 @@
 <persistence version="1.0"
 	xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="procurandoape" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="uberbeer" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<properties>
