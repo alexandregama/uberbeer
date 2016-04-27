@@ -1,15 +1,13 @@
 package uberbeer;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 
-@Named
-@RequestScoped
-public class MeuBean {
+@ManagedBean
+public class HomeBean {
 
 	private String name = "Gama";
 	
-	public MeuBean() {
+	public HomeBean() {
 		System.out.println("Bean iniciado");
 	}
 
