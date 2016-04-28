@@ -10,7 +10,7 @@
 </h:head>	
 
 <h:body>
-	<h:form>
+	<h:form id="form_cadastro">
 		<h2>
 			<h:outputText value="Cadastro de Produto" rendered="#{produtoBean.produto.id eq null}"/>
 			<h:outputText value="Edição de Produto" rendered="#{produtoBean.produto.id ne null}"/>
@@ -29,7 +29,7 @@
 			<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
 			
 			<h:commandButton value="Gravar" action="#{produtoBean.gravar}">
-				<f:ajax execute="@form" render="@form :form_lista"/>
+				<f:ajax execute="@form" render="@form form_lista"/>
 			</h:commandButton>
 			<h:commandButton value="Cancelar" action="#{produtoBean.cancelar}" rendered="#{not empty produtoBean.produto.id}"/>
 		</h:panelGrid>
@@ -59,7 +59,8 @@
 					<f:ajax execute="@this" render="form_lista"/>
 				</h:commandLink> |
 				<h:commandLink value="Alterar">
-					<f:setPropertyActionListener target="#{produtoBean.produto}" value="#{produto}"/>
+					<f:setPropertyActionListener target="#{produtoBean.produto}" value="#{produto}" />
+					<f:ajax execute="@this" render="form_cadastro"/>
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>
