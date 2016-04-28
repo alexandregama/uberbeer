@@ -5,6 +5,9 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+</h:head>	
 
 <h:body>
 	<h:form>
@@ -25,13 +28,15 @@
 			<h:outputLabel value="Preço" for="preco"/>
 			<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
 			
-			<h:commandButton value="Gravar" action="#{produtoBean.gravar}"/>
+			<h:commandButton value="Gravar" action="#{produtoBean.gravar}">
+				<f:ajax execute="@form" render="@form :form_lista"/>
+			</h:commandButton>
 			<h:commandButton value="Cancelar" action="#{produtoBean.cancelar}" rendered="#{not empty produtoBean.produto.id}"/>
 		</h:panelGrid>
 	</h:form>
 	
 	<h2>Lista de Produtos</h2>
-	<h:form>
+	<h:form id="form_lista">
 		<h:dataTable value="#{produtoBean.produtos}" var="produto">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
