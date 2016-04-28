@@ -7,9 +7,15 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:body>
-	<h2>Cadastro de Produto</h2>
 	<h:form>
+		<h2>
+			<h:outputText value="Cadastro de Produto" rendered="#{empty produtoBean.produto.id}"/>
+			<h:outputText value="Edição de Produto" rendered="#{not empty produtoBean.produto.id}"/>
+		</h2>
+		
+		<h:inputHidden value="#{produtoBean.produto.id}"/>
 		<h:panelGrid columns="2">
+		
 			<h:outputLabel value="Nome" for="nome"/>
 			<h:inputText id="nome" value="#{produtoBean.produto.nome}"/>
 			
@@ -42,8 +48,11 @@
 			</h:column>
 			
 			<h:column>
-				<f:facet name="header">Remover</f:facet>
-				<h:commandLink value="Remover" action="#{produtoBean.remove(produto)}"/>
+				<f:facet name="header">Ações</f:facet>
+				<h:commandLink value="Remover" action="#{produtoBean.remove(produto)}"/> |
+				<h:commandLink value="Alterar">
+					<f:setPropertyActionListener target="#{produtoBean.produto}" value="#{produto}"/>
+				</h:commandLink>
 			</h:column>
 		</h:dataTable>
 	</h:form>

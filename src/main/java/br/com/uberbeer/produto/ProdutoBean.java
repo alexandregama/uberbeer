@@ -24,7 +24,11 @@ public class ProdutoBean {
 	
 	public void gravar() {
 		ProdutoDao dao = new ProdutoDao();
-		dao.salva(produto);
+		if (produto.getId() == null) {
+			dao.salva(produto);
+		} else {
+			dao.atualiza(produto);
+		}
 		produto = new Produto();
 		produtos = null;
 		System.out.println("Produto gravado com sucesso!");

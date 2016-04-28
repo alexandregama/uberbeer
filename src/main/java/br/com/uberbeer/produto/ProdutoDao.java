@@ -37,6 +37,14 @@ public class ProdutoDao {
 		manager.close();
 	}
 
+	public void atualiza(Produto produto) {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		
+		manager.getTransaction().begin();
+		manager.merge(produto);
+		manager.getTransaction().commit();
+		manager.close();
+	}
 	
 	
 }
