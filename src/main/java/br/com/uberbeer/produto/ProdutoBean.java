@@ -51,6 +51,11 @@ public class ProdutoBean {
 		return produtos; 
 	}
 	
+	public void cancelar() {
+		produto = new Produto();
+		System.out.println("Cancelando a edicao");
+	}
+	
 	public Produto getProduto() {
 		return produto;
 	}
