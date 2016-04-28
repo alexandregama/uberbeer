@@ -9,8 +9,8 @@
 <h:body>
 	<h:form>
 		<h2>
-			<h:outputText value="Cadastro de Produto" rendered="#{empty produtoBean.produto.id}"/>
-			<h:outputText value="Edição de Produto" rendered="#{not empty produtoBean.produto.id}"/>
+			<h:outputText value="Cadastro de Produto" rendered="#{produtoBean.produto.id eq null}"/>
+			<h:outputText value="Edição de Produto" rendered="#{produtoBean.produto.id ne null}"/>
 		</h2>
 		
 		<h:inputHidden value="#{produtoBean.produto.id}"/>
