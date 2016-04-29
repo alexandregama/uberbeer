@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome" for="nom"/>
+			<h:inputText id="nome" value="#{usuarioBean.usuario.nome}"/>
+			
+			<h:outputLabel value="Login" for="login" />
+			<h:inputText id="login" value="#{usuarioBean.usuario.login}"/>
+			
+			<h:outputLabel value="Senha" for="senha"/>
+			<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}"/>
+		</h:panelGrid>
+		
+		<h:commandButton value="Salvar" action="#{usuarioBean.salva}"/>
+	</h:form>
+	
+	<h:dataTable value="#{usuarioBean.usuarios}" var="usuario">
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{usuario.nome}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Login</f:facet>
+			<h:outputText value="#{usuario.login}"/>
+		</h:column>
+	</h:dataTable>
+	
+</h:body>
+
+</html>
