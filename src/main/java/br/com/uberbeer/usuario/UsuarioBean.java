@@ -13,7 +13,11 @@ public class UsuarioBean {
 	
 	public void salva() {
 		UsuarioDao dao = new UsuarioDao();
-		dao.salva(usuario);
+		if (usuario.getId() == null) {
+			dao.salva(usuario);
+		} else {
+			dao.update(usuario);
+		}
 		usuario = new Usuario();
 		usuarios = dao.listaTodos();
 	}
@@ -24,6 +28,12 @@ public class UsuarioBean {
 			usuarios = dao.listaTodos();
 		}
 		return usuarios;
+	}
+	
+	public void remove(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.remove(usuario);
+		usuarios = dao.listaTodos();
 	}
 	
 	public Usuario getUsuario() {
