@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<h2>
+		<h:outputLabel value="Cadastro de Usuario" rendered="#{empty usuarioBean.usuario.id}"/>
+		<h:outputLabel value="Edição de Usuario" rendered="#{not empty usuarioBean.usuario.id}"/>
+	</h2>
+	<h:form id="form_cadastro">
+		<h:inputHidden value="#{usuarioBean.usuario.id}"/>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome" for="nome"/>
+			<h:inputText id="nome" value="#{usuarioBean.usuario.nome}"/>
+			
+			<h:outputLabel value="Login" for="login" />
+			<h:inputText id="login" value="#{usuarioBean.usuario.login}"/>
+			
+			<h:outputLabel value="Senha" for="senha"/>
+			<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}"/>
+		</h:panelGrid>
+		
+		<h:commandButton value="Salvar" action="#{usuarioBean.salva}">
+			<f:ajax execute="@all" render="@none"/>
+		</h:commandButton>
+	</h:form>
+	
+	<h:form id="form_lista">
+		<h:dataTable value="#{usuarioBean.usuarios}" var="usuario">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{usuario.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Login</f:facet>
+				<h:outputText id="form_cadastro" value="#{usuario.login}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Ações</f:facet>
+				<h:commandButton value="Remover" action="#{usuarioBean.remove(usuario)}"/> | 
+				<h:commandButton value="Editar">
+					<f:ajax execute="@this" render=":form_cadastro"/>
+					<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}"/>
+				</h:commandButton> 
+			</h:column>
+		</h:dataTable>
+	</h:form>
+	
+</h:body>
+
+</html>
