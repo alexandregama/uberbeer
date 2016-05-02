@@ -3,6 +3,7 @@ package br.com.uberbeer.usuario;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import br.com.uberbeer.infra.JPAUtil;
@@ -40,6 +41,22 @@ public class UsuarioDao {
 		manager.merge(usuario);
 		manager.getTransaction().commit();
 		manager.close();
+	}
+
+	public boolean existe(Usuario usuario) {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		String jpql = "select u from Usuario u where u.login = :login and u.senha = :senha";
+		TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class);
+		query.setParameter("login", usuario.getLogin());
+		query.setParameter("senha", usuario.getSenha());
+		
+		try {
+			Usuario usuarioEncontrado = query.getSingleResult();
+			
+			return usuarioEncontrado != null;
+		} catch (NoResultException e) {
+			return false;
+		}
 	}
 
 }
