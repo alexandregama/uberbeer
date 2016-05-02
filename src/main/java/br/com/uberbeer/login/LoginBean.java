@@ -1,12 +1,12 @@
 package br.com.uberbeer.login;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import br.com.uberbeer.usuario.Usuario;
 import br.com.uberbeer.usuario.UsuarioDao;
 
-@RequestScoped
+@SessionScoped
 @ManagedBean
 public class LoginBean {
 

@@ -10,7 +10,11 @@
 </h:head>	
 
 <h:body>
+	Usuário logado: 
+	<h:outputText value="#{loginBean.usuario.login}"/>
+	
 	<h:form id="form_cadastro">
+		
 		<h2>
 			<h:outputText value="Cadastro de Produto" rendered="#{produtoBean.produto.id eq null}"/>
 			<h:outputText value="Edição de Produto" rendered="#{produtoBean.produto.id ne null}"/>
