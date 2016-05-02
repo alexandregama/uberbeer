@@ -12,10 +12,13 @@ public class LoginBean {
 
 	private Usuario usuario = new Usuario();
 	
-	public void login() {
+	public String login() {
 		UsuarioDao dao = new UsuarioDao();
 		boolean existeUsuario = dao.existe(usuario);
-		System.out.println("Existe?: " + existeUsuario);
+		if (existeUsuario) {
+			return "produtos?faces-redirect=true";
+		}
+		return "login?faces-redirect=true";
 	}
 
 	public Usuario getUsuario() {
