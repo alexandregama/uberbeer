@@ -1,5 +1,6 @@
 package br.com.uberbeer.usuario;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,7 +9,9 @@ import javax.persistence.TypedQuery;
 
 import br.com.uberbeer.infra.JPAUtil;
 
-public class UsuarioDao {
+public class UsuarioDao implements Serializable { //Devemos implementar Serializable pois estamos injetando em uma classe SessionScoped
+
+	private static final long serialVersionUID = 5060450344580170454L;
 
 	public void salva(Usuario usuario) {
 		EntityManager manager = new JPAUtil().getEntityManager();
