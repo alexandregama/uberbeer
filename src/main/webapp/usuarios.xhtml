@@ -29,7 +29,7 @@
 		</h:panelGrid>
 		
 		<h:commandButton value="Salvar" action="#{usuarioBean.salva}">
-			<f:ajax execute="@all" render="@none"/>
+			<f:ajax execute="@all" render="@form :form_lista"/>
 		</h:commandButton>
 	</h:form>
 	

@@ -2,17 +2,22 @@ package br.com.uberbeer.usuario;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
+@RequestScoped
+@Named
 public class UsuarioBean {
 
+	@Inject
+	private UsuarioDao dao;
+	
 	private Usuario usuario = new Usuario();
 	
 	private List<Usuario> usuarios;
 	
 	public void salva() {
-		UsuarioDao dao = new UsuarioDao();
 		if (usuario.getId() == null) {
 			dao.salva(usuario);
 		} else {
@@ -24,14 +29,12 @@ public class UsuarioBean {
 
 	public List<Usuario> getUsuarios() {
 		if (usuarios == null) {
-			UsuarioDao dao = new UsuarioDao();
 			usuarios = dao.listaTodos();
 		}
 		return usuarios;
 	}
 	
 	public void remove(Usuario usuario) {
-		UsuarioDao dao = new UsuarioDao();
 		dao.remove(usuario);
 		usuarios = dao.listaTodos();
 	}

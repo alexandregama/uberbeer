@@ -4,11 +4,17 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
+@RequestScoped
+@Named
 public class ProdutoBean {
 
+	@Inject
+	private ProdutoDao dao;
+	
 	private Produto produto = new Produto();
 	
 	private List<Produto> produtos;
@@ -23,7 +29,6 @@ public class ProdutoBean {
 	}
 	
 	public void gravar() {
-		ProdutoDao dao = new ProdutoDao();
 		if (produto.getId() == null) {
 			dao.salva(produto);
 		} else {
@@ -35,7 +40,6 @@ public class ProdutoBean {
 	}
 	
 	public void remove(Produto produto) {
-		ProdutoDao dao = new ProdutoDao();
 		dao.remove(produto);
 		produtos = null;
 		System.out.println("Produto removido com sucesso!");
@@ -45,7 +49,6 @@ public class ProdutoBean {
 		System.out.println("Listando produtos..");
 		if (produtos == null) {
 			System.out.println("Lista de produtos vazia. Recuperando novamente..");
-			ProdutoDao dao = new ProdutoDao();
 			produtos = dao.listaTodos();
 		}
 		return produtos; 
