@@ -23,6 +23,10 @@ public class UsuarioLogado implements Serializable {
 		return this.usuario != null;
 	}
 	
+	public boolean isNotLogged() {
+		return this.usuario == null;
+	}
+	
 	public void logout() {
 		this.usuario = null;
 	}
