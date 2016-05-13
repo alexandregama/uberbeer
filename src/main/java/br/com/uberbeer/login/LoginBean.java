@@ -2,14 +2,16 @@ package br.com.uberbeer.login;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.uberbeer.usuario.Usuario;
 import br.com.uberbeer.usuario.UsuarioDao;
 
-@SessionScoped
+@RequestScoped
 @Named
 public class LoginBean implements Serializable {
 
@@ -18,14 +20,24 @@ public class LoginBean implements Serializable {
 	@Inject
 	private UsuarioDao dao;
 	
-	public LoginBean() {
-	}
+	@Inject
+	private UsuarioLogado usuarioLogado;
 	
 	private Usuario usuario = new Usuario();
+	
+	public LoginBean() {
+		System.out.println("LoginBean Constructor");
+	}
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("LoginBean Criado!");
+	}
 	
 	public String login() {
 		boolean existeUsuario = dao.existe(usuario);
 		if (existeUsuario) {
+			usuarioLogado.loga(usuario);
 			return "produtos?faces-redirect=true";
 		}
 		return "login?faces-redirect=true";
@@ -38,5 +50,9 @@ public class LoginBean implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	@PreDestroy
+	public void destroy() {
+		System.out.println("LoginBean sendo destruido!");
+	}
 }
