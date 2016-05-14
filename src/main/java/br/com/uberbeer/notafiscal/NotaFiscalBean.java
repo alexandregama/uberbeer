@@ -3,14 +3,14 @@ package br.com.uberbeer.notafiscal;
 import java.io.Serializable;
 import java.util.Optional;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.uberbeer.produto.Produto;
 import br.com.uberbeer.produto.ProdutoDao;
 
-@ViewScoped
+@RequestScoped
 @Named
 public class NotaFiscalBean implements Serializable {
 

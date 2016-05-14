@@ -9,7 +9,7 @@
 <ui:composition template="template.xhtml">
 	<ui:define name="corpo">
 		
-		<h2>Nota Fiscal</h2><br/>
+		<h2>Nota Fiscal</h2>
 		<h:form>
 			<h3>Dados da Nota</h3>
 			<h:panelGrid columns="2">
@@ -17,7 +17,7 @@
 				<h:inputText id="cnpj" value="#{notaFiscalBean.notaFiscal.cnpj}"/>
 				
 				<h:outputLabel value="Data" for="data"/>
-				<h:inputText id="data" value="#{notaFiscalBean.notaFiscal.data}">
+				<h:inputText id="data" value="#{notaFiscalBean.notaFiscal.data.time}">
 					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
 				</h:inputText>
 			</h:panelGrid>
@@ -38,7 +38,7 @@
 			<h:commandButton value="Salvar Nota" action="#{notaFiscalBean.salvarNota}"/>
 		</h:form>
 		
-		<h2>Itens da Nota Fiscal</h2><br/>
+		<h2>Itens da Nota Fiscal</h2>
 		<h:form>
 			<h:dataTable value="#{notaFiscalBean.notaFiscal.itens}" var="item">
 				<h:column>
