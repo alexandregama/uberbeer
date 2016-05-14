@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,6 +17,9 @@ public class ProdutoBean {
 
 	@Inject
 	private ProdutoDao dao;
+	
+	@Inject
+	private Event<ProdutoEvent> produtoEvent;
 	
 	private Produto produto = new Produto();
 	
@@ -34,19 +38,20 @@ public class ProdutoBean {
 	public void gravar() {
 		if (produto.getId() == null) {
 			dao.salva(produto);
+			produtoEvent.fire(new ProdutoEvent(produto));
+			
 		} else {
 			dao.atualiza(produto);
+			produtoEvent.fire(new ProdutoEvent(produto));
 		}
 		produto = new Produto();
 		produtos = null;
-		System.out.println("Produto gravado com sucesso!");
 	}
 	
 	@Transactional
 	public void remove(Produto produto) {
 		dao.remove(produto);
 		produtos = null;
-		System.out.println("Produto removido com sucesso!");
 	}
 
 	public List<Produto> getProdutos() {

@@ -12,13 +12,13 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "desricao")
 	private String descricao;
-	
+
 	@Column(name = "preco")
 	private Double preco;
 
@@ -53,4 +53,10 @@ public class Produto {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", nome=" + nome + "]";
+	}
+
 }
