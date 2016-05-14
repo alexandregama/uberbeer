@@ -8,6 +8,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.uberbeer.infra.Transactional;
+
 @RequestScoped
 @Named
 public class ProdutoBean {
@@ -28,6 +30,7 @@ public class ProdutoBean {
 		System.out.println("ProdutoBean construido");
 	}
 	
+	@Transactional
 	public void gravar() {
 		if (produto.getId() == null) {
 			dao.salva(produto);
@@ -39,6 +42,7 @@ public class ProdutoBean {
 		System.out.println("Produto gravado com sucesso!");
 	}
 	
+	@Transactional
 	public void remove(Produto produto) {
 		dao.remove(produto);
 		produtos = null;
