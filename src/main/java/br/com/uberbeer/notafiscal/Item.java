@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import br.com.uberbeer.produto.Produto;
@@ -26,6 +27,10 @@ public class Item {
 	
 	@Column(name = "quantidade")
 	private Integer quantidade;
+	
+	@ManyToOne
+	@JoinColumn(name = "nota_fiscal_id")
+	private NotaFiscal notaFiscal;
 
 	Item() {
 	}
@@ -89,6 +94,14 @@ public class Item {
 
 	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario = valorUnitario;
+	}
+
+	public NotaFiscal getNotaFiscal() {
+		return notaFiscal;
+	}
+
+	public void setNotaFiscal(NotaFiscal notaFiscal) {
+		this.notaFiscal = notaFiscal;
 	}
 	
 }

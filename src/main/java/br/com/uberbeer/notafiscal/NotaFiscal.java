@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class NotaFiscal {
 	@Column(name = "data")
 	private Calendar data = Calendar.getInstance();
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "notaFiscal")
 	private List<Item> itens = new ArrayList<>();
 	
 	public Long getId() {

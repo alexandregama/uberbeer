@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.uberbeer.infra.JPAUtil;
 
+@RequestScoped
 public class ProdutoDao implements Serializable {
 
 	private static final long serialVersionUID = 1117981130477623288L;
