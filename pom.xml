@@ -17,14 +17,6 @@
 		</dependency>
 
 		<dependency>
-			<!-- Provided by Tomcat, but needed for compilation -->
-			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
-			<version>7.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 			<version>1.2</version>
