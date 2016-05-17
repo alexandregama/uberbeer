@@ -38,7 +38,7 @@ public class AutorizadorDeUsuario implements PhaseListener {
 	
 	@Override
 	public PhaseId getPhaseId() {
-		return PhaseId.RENDER_RESPONSE;
+		return PhaseId.RESTORE_VIEW;
 	}
 	
 }
