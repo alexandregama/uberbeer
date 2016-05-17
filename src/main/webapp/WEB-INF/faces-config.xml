@@ -7,7 +7,7 @@
 
 	<lifecycle>
 		<phase-listener>br.com.uberbeer.infra.PhaseListenerLifecycle</phase-listener>
-		<!-- <phase-listener>br.com.uberbeer.autenticacao.AutorizadorDeUsuario</phase-listener> -->
+		<phase-listener>br.com.uberbeer.autenticacao.AutorizadorDeUsuario</phase-listener>
 	</lifecycle>
 
 </faces-config>
