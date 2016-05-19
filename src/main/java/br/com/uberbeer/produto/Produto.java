@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Produto {
 
@@ -14,6 +16,7 @@ public class Produto {
 	private Long id;
 
 	@Column(name = "nome")
+	@NotEmpty(message = "Nome nao pode ser vazio manolo")
 	private String nome;
 
 	@Column(name = "desricao")
