@@ -45,4 +45,20 @@ public class ProdutoDao implements Serializable {
 		return Optional.ofNullable(produto);
 	}
 
+	public int totalDeProdutos() {
+		String jpql = "select count(p) from Produto p";
+		TypedQuery<Long> query = manager.createQuery(jpql, Long.class);
+		
+		return query.getSingleResult().intValue();
+	}
+
+	public List<Produto> listaPaginado(int inicio, int fim) {
+		String jpql = "select p from Produto p";
+		TypedQuery<Produto> query = manager.createQuery(jpql, Produto.class);
+		query.setFirstResult(inicio);
+		query.setMaxResults(fim);
+		
+		return query.getResultList();
+	}
+
 }

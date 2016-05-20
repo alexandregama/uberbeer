@@ -39,7 +39,7 @@
 		
 		<h2>Lista de Produtos</h2>
 		<h:form id="form_lista">
-			<p:dataTable value="#{produtoBean.produtos}" var="produto" paginator="true" rows="3">
+			<p:dataTable value="#{produtoPaginadoBean.dataModel}" var="produto" paginator="true" rows="3" lazy="true">
 				<p:column headerText="Id">
 					<h:outputText value="#{produto.id}"/>
 				</p:column>

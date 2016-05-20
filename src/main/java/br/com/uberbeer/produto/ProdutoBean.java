@@ -80,4 +80,5 @@ public class ProdutoBean {
 	public void destroy() {
 		System.out.println("Destruindo ProdutoBean..");
 	}
+
 }
